@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selectors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/base-style.css">
+  <link rel="stylesheet" href="css/selectors.css">
+</head>
+<body>
+  
+  <!--When we take a look at our html file, we can see that the form the hr and image elements are direct children of the container div here. But the h1, the label element and the input fields are all direct children of the form element. They're not direct children of this container div.  -->
+  
+	<div id="container">
+		<form class="form-contact br" > <!--Form sheet 1. This is going to be a contact form. Here we have a class called form-contact we'll use this for css design. We also added a new class br here so that we can apply the design we created in our css file.--> <!-- This form element is a direct children of the container div-->
+	  	<h1>Contact</h1> <!--This h1 element is a direct children of the form element.-->
+
+      <!--Notice how most of the elements have attributes in their opening tags-->
+      
+		  <label for="name">Name:</label>  <!--We have for attribute--> <!--This label element is a direct children of the form element.-->
+		  <input type="text" id="name">   <!--We have type attrbiute -->   <!--This input element is a direct children of the form element.-->
+
+     	<label for="email">Email:</label>
+     	<input type="email" id="email" placeholder="email@website.com">   <!--Even this placeholder attribute-->
+  
+     	<label for="msg">Message:</label>
+     	<textarea id="msg" rows="7"></textarea>
+      
+      
+      <!--For example, the two input element here in the first form are sibling elements. The plus sign combinator is called an adjacent sibling combinator. And selectors that use them are called adjacent sibling selectors, because they target an elements next sibling on the page. So the one that immediately follows the element. So notice when the two buttons are in line they're a little too close together. Now what if we could somehow apply a left margin to any button that's next to anther button. So that way the first button remains flush with the contact, while the second button, gets a little bit of seperation with the left margin. we'll with the adjacent sibling selector, we can specifically target button elements that immediately follow a button element. Without having to add extra classes in our mark.-->
+
+		  <input class="btn inln default" type="submit" value="Submit"> <!--Let's give our button input elements, that button class.Let's add a class attribute and give it a class button. Here added another class called default. Here we added a new class called inln class to submit and reset buttons only.-->
+ 		  <input  class="btn  inln error" type="reset" value="Reset"> <!--We also added the same class here btn. Here added another class called error. Here we added a new class called inln class to submit and reset buttons only.-->
+		</form>
+		
+		<hr> <!-- This hr element is a direct children of the container div-->
+ 		<img class="avatar rounded"src="img/avatar.png" alt="Mountains"> <!--We added two classes here avatar and rounded that we have just recently created in our css file.--> <!-- This img element is a direct children of the container div-->
+		
+		<form class="form-login">     <!--Form sheet 2. This one we can assume that is going to be a login form. Here we have a class called form-login we'll use this for css design-->
+			<label for="username">Username:</label> 
+			<input type="text" id="username">
+      
+      <!--You may ask, well, its the only link in the form. Well, let see what happens when we add this link as a decendant of another child element. So we go ahead and copy the last link here and I'll just paste it inside any of the labels. For example I'm going to paste it inside the password label. Motice how it doesn't target that particular link inside the password label, since this link is no longer a direct child of the form element, it's now a direct child of the label element.-->
+
+			<label for="password">Password: <!--<a href="#" target="_blank">Forgot your password?</a>-->  </label>
+			<input type="password" id="password">  <!--Notice how it doesn't target that particular link inside the password label, since this link is no longer a direct child of the form element, it's now a direct child of the label element.-->
+
+     
+			<input class="btn default" type="submit" value="Login"> <!--We added the same class here btn. Here added another class called default-->
+      <a href="#" target="_blank">Forgot your password?</a>  <!--This is our link element that it has a target attribute and the value _blank. We wil be using this in our css design.-->
+		</form>
+	</div>
+</body>
+</html>

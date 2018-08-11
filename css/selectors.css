@@ -1,0 +1,265 @@
+/* Attribute Selectors ------------- */
+
+/***For example, the most basic attribute selector will target an element attribute, no matter its value. Let's say we want to target every element on the page, with a class attribute. We're going to create our first attribute selector by typing a set of square bracket, then writing class inside of them.***/
+
+
+
+form[class= "form-contact"] { /*Notice this will only target the first form with the class form contact. We may also see an attribute selector that's qualified with an element type.So if we add the form before type selector to this attribute selector right before the opening square bracket here. What this means is that it's specifically targeting a form element with class form contact. And as we can see it works the same way. it's just a little more specific. */
+
+/*  color:red; Here add a color property and set the color to red.*/
+  
+  padding: 20px 24px; /*top and bottom padding are 20px. right and left padding are 24px*/
+  background: #f4f7f8;
+
+}
+
+/**Once it saved, notice how only those elements with a class attribute have the red text color style applied, even if their class attribute values are different. So currently, the two forms element are the only ones with class attributes.**/
+
+
+
+
+/**We can do the same thing with id attributes. So to target the div that has an id attribute with the value container.**/
+
+
+div[id="container"] {
+
+  max-width: 500px;
+  margin: auto;
+
+}
+
+/*We can see that it targets the main container div on the page*/
+
+
+
+
+/**Well now you may be asking, why target elements with attributes selectors instead of the classes or ids we learned earlier. Well most of the time there's no real advantage to using these attribute selectors whe it comes to targetting ids and class attributes. It's usually best to use a class or id selector, in this case. so they can also be rewritten as the one below. **/
+
+
+.form-contact {
+  
+  padding: 20px 24px;
+  background: #f4f7f8;
+}
+
+
+#container {
+
+  max-width: 500px;
+  margin: auto;
+}
+
+
+/*This one is now a little readable for us. Attribute selector can also be a bit slower to interpret then a c;ass or id. Even for the browser. In some cases, the browser has to do a little extra work to interpret and parse complex attribute selectors.*/
+
+
+
+/*As I mentioned earlier, attribute selectors come in handy when styling form elements, for instance, the type attribute and input element is what determine the function of an input element. So, say we have a lot of input elements on the page, which we kind of do here, and we only want to target input elements with a type attribute of text. So we used the attribute selector to make that changes. See below.*/
+
+/*
+
+input[type="text"] {
+
+  background: #fdfee6;
+
+}
+*/
+
+/*Notice how only those two input fields with a type attribute value of text take on the light yellow background color.*/
+
+
+
+/*But in our case, we'd like to give form fields with a place holder attribute that light yellow background instead*/
+
+/*
+input[placeholder] {
+
+  background: #fdfee6;
+
+}
+*/
+
+/*You can see how the only field with that yellow light background is the email field with that placeholder attribute.*/
+
+
+
+
+/*Let's say that later, we realized that we don't exactly need to target every field with a placeholder attribute. just the ones that accept an email address.*/
+
+input[type="email"] {
+
+  background: #fdfee6;
+
+}
+
+
+/*Once you refresh the page, we can see how it targets the same form field because if we go back to our index file and take a look at the input element, it does indeed have a type attribute with the value email.*/
+
+
+
+
+
+
+
+
+
+/*Finally sometimes we may have a lot of similar elements on the page, without class or id names. But some of them may have special attributes assigned to them. So links for example. So say we need to target all links that open in a new window or tab. We'll that's usually done with a target attribute. So if you go back to our index.html file and take a look at our link element we can see that it has a target attribute. So let's create a new attribute selector that targets an anchor elements, target attribute with that underscore blank value.*/
+
+
+a[target="_blank"] {
+
+  color: #39add1;
+  text-decoration: none;
+  border-bottom: 1px dotted;
+
+}
+
+
+/*Once you refresh the page, when we do that we can see how the password link here in the login form. Takes on those new style, since it has that target equals_blank attribute and value.*/
+
+
+
+
+/* DRY Classes ------------- */
+
+
+/***The DRY methodology works best with classes, not ID’s since we know, ID’s are not reusable. For instance, let's say that we want to use a particular border radius style, on many elements throughout our project. Instead of adding the same border radius declarations, to each selector, that needs them, we can create a reusable class selector for that particular border radius style.**/
+
+
+
+.br { /*Here we have created a new class called br stands for border radius*/
+
+  border-radius: 0.5em; /*This will create a rounded corners, on our first form element.*/
+
+}
+
+/*So now we're able to use this br class, on any element that needs this particular border radius. And this is a useful method when working with elements that have common styles, with certain variation, or modifiers.*/
+
+
+
+/*Images for example. So let's create one that styles our images, particularly the avatar image in our login form.*/
+
+.avatar { /*We created a new class selector called avatar*/
+
+  display:block;
+  margin: 0 auto 2em;
+  
+}
+
+.rounded {  /*Here we created a new class. But now what's great is that we're also able to use this rounded class, on any element that needs to be round, not just images. */
+
+    border-radius: 50%;
+  
+}
+
+
+
+
+
+
+/*And since we made some changes.These are no longer attribute selectors. We are going to copy this and move it right here with the rest of the dry classes.*/
+
+
+/*This time, we'll want to target our form buttons, and define a new mouse cursor. So we'll want to display the pointer cursor, when a user hovers over any of these buttons, because currently it's not doing that. So usually with forms there are three buttons attributes we can work with. So let's go ahead and target all three. So we are going to create a selector group that targets them.*/
+
+
+/*
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+*/
+
+/*We are now going to replace the button attribute selector group we wrote earlier so those classes up there. with a class button.*/
+  
+  .btn {    /*Here created a new class .btn stands for button*/
+  
+  cursor: pointer; /*When you hover them the mouse pointer will change from arrow to hand point into those buttons*/
+  
+  font-size: .875em;
+  font-weight: 400;
+  color:#fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase; /*We also added a text transform property that transforms the text and button to uppercase letters.*/
+
+}
+
+
+/*We can see how all button display that pointer cursor when we mouse over them.*/
+
+
+
+.btn:hover { /*We added a hover state. So once again target that .btn or butto  class and add a pseudo-class right after it.*/
+
+  opacity:.75; /*Then we are going to change the opacity of the button with an opacity property and  giving that value of 0.75*/
+}
+
+
+.default {  /*We added some new class here so that we use this in our html to apply this design*/
+
+  background-color: #52BAB3;
+}
+
+.error {  /*We added some new class here so that we use this in our html to apply this design*/
+
+  background-color: #ff784f;
+}
+
+
+
+
+/*So finally, let's make the two buttons here in the contact form, display inline with each other. But only when the browser or device is at a certain width. And we can do that with a media query.*/
+
+
+@media (min-width: 769px) { /*We write a media query, that will target elements when the browser is 769 pixels or wider.*/
+
+  .inln{  /*We'll want to define a reusable modifier class, that displays an element, inline block whe the viewport is at 769 pixels or wider. So we called the class inln for inline */
+  width: auto;
+  display: inline-block;
+
+}
+
+
+  .btn + .btn {      /*Let's create a new selector that targets the class button. The with the plus sign combinator. Will target its immediate sibling with the  same class which is .btn again.*/
+
+  margin-left: 20px; /*This margin will seperate the or give space between submit button  and reset button. Notice how the the second reset button gets a left margin. While the first button is still aligned with the content. It's left aligned.*/
+
+  /*So now anytime we see two or more siblings with that class button, well see some separation between them with that left margin.*/
+  
+}
+
+
+}
+
+
+/*Summary: As you can see, in the narrow viewport size, the two buttons are displayed block, by default. Then once the viewport is 769 pixels or wider, that inline class sort of kicks in, and display the buttons, inline.*/
+
+
+
+
+/* Combinators ------------- */
+
+/*So first, we're going to target the form element, and then we're going to follow that with a greater than sign then an "a" or anchor elements.*/
+
+
+form > a {
+
+  font-size: 0.7em;
+}
+
+/*Summary: Notice how when we refresh the page the direct child selector we wrote here, target the link on the bottom form "forgot your password", because it is in fact a direct child of the form element.*/
+
+/*You may ask, well, its the only link in the form. Well, let see what happens when we add this link as a decendant of another child element. So we go ahead and copy the last link here and I'll just paste it inside any of the labels. For example I'm going to paste it inside the password label. Motice how it doesn't target that particular link inside the password label, since this link is no longer a direct child of the form element, it's now a direct child of the label element.So as we can see, this is a very specific selector.*/
+
+
+h1 ~ label {    /*Here we are creating a general sibling selector that targets every sibling label element that follows an h1. So we'll do that by first selecting the h1 element. then we follow that with tilde symbol. it pronounce tilda. And we follow it with label element type. So with this selector, we're talling the browser to target all sibling label elements that follow in h1. So let's write some css property to see which labels this selector will target.*/
+
+  background:tomato;
+  color:white;
+  padding: 5px;
+
+}
+
+/*When you refresh the page as you can see that every sibling that follows the h1 takes on those styles we just wrote. And if we we're top keep adding labels to this first form, they'd also turned red. And also notice that only the labels in the top contact form takes on those styles not the ones in the login form, since there isn't an h1 element in that form. Just on top on the contact form.*/
+
+
